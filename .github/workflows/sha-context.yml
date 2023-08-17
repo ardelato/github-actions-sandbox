@@ -1,0 +1,23 @@
+name: GitHub Event Context
+on:
+  pull_request: null
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gather-shas:
+    name: gather-shas
+    runs-on: self-hosted
+    timeout-minutes: 5
+    steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v3
+
+        - name: Echo Shas
+          run: |
+            echo "sha: ${{ github.sha }}"
+            echo "head_sha: ${{ github.event.pull_request.head.sha }}"
+            echo "base_sha: ${{ github.event.pull_request.base.sha }}"
+            echo "master_sha: $(git rev-parse origin/master)"

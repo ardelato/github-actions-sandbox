@@ -28,8 +28,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run otel-action
-        uses: MNThomson/otel-action@master
+        uses: inception-health/otel-export-trace-action@latest
         with:
-          ENDPOINT: ${{ secrets.ENDPOINT }}
-          HEADERS: ${{ secrets.HEADERS }}
-          SERVICE_NAME: "otel-action"
+          otlpEndpoint: ${{ secrets.ENDPOINT }}
+          otlpHeaders: ${{ secrets.HEADERS }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}

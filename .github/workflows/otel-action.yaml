@@ -25,9 +25,10 @@ jobs:
     needs: [job1, job2]
     steps:
       - name: Checkout Action
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: Run otel-action
-        uses: ./
+        uses: MNThomson/otel-action@master
         with:
           ENDPOINT: ${{ secrets.ENDPOINT }}
           HEADERS: ${{ secrets.HEADERS }}

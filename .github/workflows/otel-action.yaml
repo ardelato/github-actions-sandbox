@@ -27,9 +27,9 @@ jobs:
       - name: Checkout Action
         uses: actions/checkout@v4
 
-      - name: Run otel-action
-        uses: inception-health/otel-export-trace-action@latest
+      - name: Upload OTEL traces
+        uses: MNThomson/otel-action@master
         with:
-          otlpEndpoint: ${{ secrets.ENDPOINT }}
-          otlpHeaders: ${{ secrets.HEADERS }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          endpoint: ${{ secrets.ENDPOINT }}
+          headers: ${{ secrets.HEADERS }}
+          service_name: "otel-action"
